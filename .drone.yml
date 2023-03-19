@@ -22,3 +22,10 @@ steps:
     - latest
     insecure: true
     create_repository: true
+- name: deploy
+  image: joshdvir/drone-ecs-deploy
+  settings:
+    cluster: app-cluster
+    service: app-first-service
+    image_name: 728600357975.dkr.ecr.us-east-2.amazonaws.com/test:latest
+    aws_region: us-east-2

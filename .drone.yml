@@ -27,9 +27,9 @@ steps:
   settings:
     cluster: app-cluster
     service: app-first-service
-    access_key:
+    aws_access_key_id:
       from_secret: AWS_ACCESS_KEY_ID
-    secret_key:
+    aws_secret_access_key:
       from_secret: AWS_SECRET_ACCESS_KEY
     image_name: 728600357975.dkr.ecr.us-east-2.amazonaws.com/test:latest
     aws_region: us-east-2

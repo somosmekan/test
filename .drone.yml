@@ -9,9 +9,14 @@ steps:
   - npm test
 - name: publish  
   image: plugins/ecr
+  environment:
+    access_key:
+      from_secret: AWS_ACCESS_KEY_ID
+    secret_key:
+      from_secret: AWS_SECRET_ACCESS_KEY
   settings:
-    access_key: ${AWS_ACCESS_KEY_ID}
-    secret_key: ${AWS_SECRET_ACCESS_KEY}
+    access_key: access_key
+    secret_key: secret_key
     repo: ${DRONE_REPO_NAME}
     registry: 728600357975.dkr.ecr.us-east-2.amazonaws.com
     tags:

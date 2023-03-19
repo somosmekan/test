@@ -16,7 +16,7 @@ steps:
       from_secret: AWS_SECRET_ACCESS_KEY
     region: us-east-2
     repo: test
-    registry: public.ecr.aws/q4m3s1z7
+    registry: 728600357975.dkr.ecr.us-east-2.amazonaws.com/test
     tags:
     - ${DRONE_COMMIT:0:7}
     - latest

@@ -17,7 +17,7 @@ steps:
   settings:
     access_key: access_key
     secret_key: secret_key
-    region: region
+    region: us-east-2
     repo: ${DRONE_REPO_NAME}
     registry: 728600357975.dkr.ecr.us-east-2.amazonaws.com
     tags:

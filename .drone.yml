@@ -17,9 +17,11 @@ steps:
   settings:
     access_key: access_key
     secret_key: secret_key
+    region: region
     repo: ${DRONE_REPO_NAME}
     registry: 728600357975.dkr.ecr.us-east-2.amazonaws.com
     tags:
     - ${DRONE_COMMIT:0:7}
     - latest
     insecure: true
+    create_repository: true

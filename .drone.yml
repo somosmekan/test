@@ -22,3 +22,4 @@ steps:
     tags:
     - ${DRONE_COMMIT:0:7}
     - latest
+    insecure: true

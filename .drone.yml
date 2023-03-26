@@ -31,5 +31,10 @@ steps:
       from_secret: AWS_ACCESS_KEY_ID
     aws_secret_access_key:
       from_secret: AWS_SECRET_ACCESS_KEY
+    environment:
+      AWS_ACCESS_KEY_ID:
+        from_secret: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY:
+        from_secret: AWS_SECRET_ACCESS_KEY
     image_name: 728600357975.dkr.ecr.us-east-2.amazonaws.com/test:latest
     aws_region: us-east-2

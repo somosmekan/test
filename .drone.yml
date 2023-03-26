@@ -22,24 +22,19 @@ steps:
     - latest
     insecure: true
     create_repository: true
+
 - name: deploy
-  image: joshdvir/drone-ecs-deploy
-  settings:
-    cluster: app-cluster
-    service: app-first-service
-    aws_access_key_id:
+  image: alpine
+  environment:
+    AWS_ACCESS_KEY_ID:
       from_secret: AWS_ACCESS_KEY_ID
-    aws_secret_access_key:
+    AWS_SECRET_ACCESS_KEY:
       from_secret: AWS_SECRET_ACCESS_KEY
-    environment:
-      AWS_ACCESS_KEY_ID:
-        from_secret: AWS_ACCESS_KEY_ID
-      AWS_SECRET_ACCESS_KEY:
-        from_secret: AWS_SECRET_ACCESS_KEY
-    commands:
-      - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-      - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-      - aws configure set default.region us-east-2
-      - aws cloudfront update-distribution --id E26VS5XA3057IM --default-root-object index.html
-    image_name: 728600357975.dkr.ecr.us-east-2.amazonaws.com/test:latest
-    aws_region: us-east-2
+  commands:
+  - apk update && apk add zip
+  - apk --no-cache add ca-certificates curl bash jq py2-pip
+  - pip install awscli
+  - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+  - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+  - aws configure set default.region us-east-2
+  - aws ecs update-service --cluster app-cluster --service app-first-service --force-new-deployment --region us-east-2

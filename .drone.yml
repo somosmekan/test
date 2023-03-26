@@ -32,8 +32,9 @@ steps:
       from_secret: AWS_SECRET_ACCESS_KEY
   commands:
   - apk update && apk add zip
-  - apk --no-cache add ca-certificates curl bash jq py2-pip
-  - pip install awscli
+  - apk --no-cache add python3 py3-pip
+  - pip3 install --upgrade pip 
+  - pip3 install --no-cache-dir awscli
   - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
   - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
   - aws configure set default.region us-east-2
